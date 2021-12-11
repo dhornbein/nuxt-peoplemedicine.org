@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nuxt-content {
+  p:not(:last-child) {
+    @apply mb-4;
+  }
+}

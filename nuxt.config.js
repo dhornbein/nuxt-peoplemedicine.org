@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'peoplemedicine.org',
+    title: 'People Medicine',
     htmlAttrs: {
       lang: 'en'
     },
@@ -17,6 +17,10 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
+  },
+
+  tailwindcss: {
+    cssPath: '~/assets/css/tailwind.scss'
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -34,6 +38,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -52,5 +57,14 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  googleFonts: {
+    families: {
+      Nunito: {
+        wght: [300, 400, 800],
+        ital: [100, 400, 700]
+      },
+    }
   }
 }
