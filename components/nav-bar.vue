@@ -106,13 +106,19 @@ nav {
       a {
         @apply p-2 md:px-5 block;
       }
+      &.link-active a:not([href="/"]) {
+        @apply text-brand-yellow;
+      }
+      &.link-active.link-exact-active a {
+        @apply text-brand-pink;
+      }
     }
   }
   
   &:not(.is-open) { // default navigation
     @apply max-h-14 items-center justify-between lg:justify-center;
     ul {
-      @apply sm:justify-items-start md:justify-between flex-grow md:flex md:w-5/12 lg:flex-shrink;
+      @apply sm:justify-items-start md:justify-around flex-grow md:flex md:w-5/12 lg:flex-shrink;
       li {
         @apply inline;
         a {
