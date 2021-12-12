@@ -15,15 +15,7 @@
       </div>
 
       <div class="flex justify-evenly items-center">
-        <nuxt-link to="#who-we-are" class="text-brand-green-400 hover:text-brand-cream">Who we are</nuxt-link>
-        <nuxt-link to="#what-we-do" class="text-brand-pink hover:text-brand-cream">What we do</nuxt-link>
-        <div class="md:block animate-bounce bg-white p-2 w-10 h-10 ring-1 ring-gray-900/5 shadow-lg rounded-full flex items-center justify-center">
-          <svg class="w-6 h-6 text-violet-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </div>
-        <nuxt-link to="/offerings" class="text-brand-orange hover:text-brand-cream">Offerings</nuxt-link>
-        <nuxt-link to="/resources" class="text-brand-purple hover:text-brand-cream">Resources</nuxt-link>
+        <navBar />
       </div>
     </section>
 
@@ -62,16 +54,18 @@
       </div>
     </section>
 
-    <section class="bg-dark py-20 min-h-[80vh] py-[230px] flex flex-col md:flex-row justify-center items-center overflow-hidden">
+    <section class="bg-dark min-h-[80vh] py-[230px] flex flex-col md:flex-row justify-center items-center overflow-hidden">
       <div class="text-brand-cyan min-h-[360px] max-w-[360px] p-5 relative flex flex-col justify-center mb-[180px] md:mb-0 md:mr-[155px]">
-        <div class="absolute w-full h-0 bg-no-repeat top-0 left-0 pt-[100%] scale-[2.3] origin-center bg-center" style="background-image:url('/img/web-bio-cirlce-teal.svg'); background-size: auto 80%;"></div>
+        <div class="absolute w-full h-0 bg-no-repeat top-0 left-0 pt-[100%] scale-[2.3] origin-center bg-center" style="background-image:url('/img/web-bio-circle-teal.svg'); background-size: auto 80%;"></div>
+        <div class="absolute h-[300px] w-full bg-no-repeat -top-56 -left-20 origin-center bg-center bg-contain" style="background-image:url('/img/pm-portrait-maria.svg');"></div>
         <h2 class="text-3xl font-bold relative">Maria Talero</h2>
 
         <nuxt-content :document="content.maria" class="" />
 
       </div>
       <div class="text-brand-orange min-h-[360px] max-w-[360px] p-5 relative flex flex-col justify-center">
-        <div class="absolute w-full h-0 bg-no-repeat top-0 left-0 pt-[100%] scale-[2.3] origin-center bg-center" style="background-image:url('/img/web-bio-cirlce-orange.svg'); background-size: auto 80%;"></div>
+        <div class="absolute w-full h-0 bg-no-repeat top-0 left-0 pt-[100%] scale-[2.3] origin-center bg-center" style="background-image:url('/img/web-bio-circle-orange.svg'); background-size: auto 80%;"></div>
+        <div class="absolute h-[300px] w-full bg-no-repeat -bottom-56 -right-20 origin-center bg-center bg-contain" style="background-image:url('/img/pm-portrait-drew.svg');"></div>
         <h2 class="text-3xl font-bold relative">Drew Hornbein</h2>
 
         <nuxt-content :document="content.drew" class="" />
@@ -80,7 +74,7 @@
     </section>
 
     <section class="bg-gradient-to-b from-dark to-brand-green-400">
-      <div class="flex justify-center items-center min-h-screen bg-no-repeat bg-center h-screen min-h-[700px]" style="background-image: url('/img/web-logo-circle-color-shape.svg'); background-size: auto 95%;">
+      <div class="flex justify-center items-center bg-no-repeat bg-center h-screen min-h-[700px]" style="background-image: url('/img/web-logo-circle-color-shape.svg'); background-size: auto 95%;">
         <div>
           <h2 class="text-sm text-mono uppercase">Talk to Us</h2>
           <a :href="'mailto:' + email" class="text-2xl text-brand-red hover:text-red-800">{{ email }}</a>
@@ -113,6 +107,7 @@
 
 <script>
 export default {
+  layout: 'home',
   async asyncData ({ $content }) {
     const aboutPages = await $content('about').fetch()
     const offerings = await $content('offerings').sortBy('order').fetch()
