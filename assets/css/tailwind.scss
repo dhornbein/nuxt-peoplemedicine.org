@@ -2,8 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 .nuxt-content {
-  p:not(:last-child) {
+  p:not(:last-child),
+  ul:not(:last-child) {
     @apply mb-4;
+  }
+  blockquote {
+    @apply px-4 py-4 mb-4 border-l-4 border-gray-200;
+  }
+  ul {
+    @apply list-disc pl-4;
+    li {
+      @apply mb-2;
+    }
   }
 }
