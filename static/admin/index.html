@@ -1,0 +1,310 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager</title>
+</head>
+<body>
+  <!-- Include the script that builds the page and powers Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script>
+    var GoogleDocControl = createClass({
+
+      getInitialState: function() {
+        return {
+          gid: null,
+          docType: null,
+          handlerActive: null,
+          handlerSelectorDisabled: true,
+          handlerSelectorValue: null,
+          handlerFilter: {},
+          valueHistory: [],
+          hidden: true
+        };
+      },
+
+      getDefaultProps: function() {
+        return {
+          replaceThis: '[ID]',
+          handlers: {
+            gdoc: {
+              title: 'Edit/view Google Doc',
+              type: 'docs',
+              url: 'https://docs.google.com/document/d/[ID]/edit'
+            },
+            gdoc_preview: {
+              title: 'Preview Google Doc',
+              type: 'docs',
+              url: 'https://docs.google.com/document/d/[ID]/preview'
+            },
+            gdoc_template: {
+              title: 'Template Google Doc',
+              type: 'docs',
+              url: 'https://docs.google.com/document/d/[ID]/template/preview'
+            },
+            gdoc_copy: {
+              title: 'Copy Google Doc',
+              type: 'docs',
+              url: 'https://docs.google.com/document/d/[ID]/copy'
+            },
+            gdoc_pdf: {
+              title: 'Download Google Doc as PDF',
+              type: 'docs',
+              url: 'https://docs.google.com/document/d/[ID]/export?format=pdf'
+            },
+            gdoc_view: {
+              title: 'View Google Drive File',
+              type: 'drive',
+              url: 'https://drive.google.com/file/d/[ID]/view'
+            },
+            gdoc_download: {
+              title: 'Download Google Drive File',
+              type: 'drive',
+              url: 'https://drive.google.com/uc?export=download&id=[ID]'
+            }
+          }
+        }
+      },
+      
+      matchGid: function(string) {
+        let regex = /d\/([^/]*)|id=([^/&]*)/,
+            match = string.match(regex),
+            id = match ? match[1] || match[2] : false;
+        
+        return id;
+      },
+
+      matchDocType: function(string) {
+        let regex = /(?:https?:\/\/)?(docs|drive)\.google\.com\/(document|spreadsheets|presentation)?/,
+            match = string.match(regex),
+            type = match ? match[1] : false;
+        
+        return type;
+      },
+
+      setGid: function(gid,callback) {
+        this.setState({gid: gid},callback);
+      },
+
+      setDocType: function(docType,callback) {
+        this.setState({docType: docType},callback);
+      },
+
+      // function addValueToHistory takes value and adds it to history array if it is not already in the array
+      addValueToHistory: function(value) {
+        // if the gid is the same as the last value in the history array, don't add it
+        if ( this.state.valueHistory[0] && value.match( this.matchGid( this.state.valueHistory[0] ) ) ) {
+          return;
+        }
+        console.log('adding value to history', value);
+        let history = this.state.valueHistory;
+        if (history.indexOf(value) === -1) {
+          history.unshift(value);
+          this.setState({valueHistory: history});
+        } else {
+          // move value to the top of the history array
+          history.splice(history.indexOf(value), 1);
+        }
+      },
+
+      runHandler: function() {
+        console.log('runHandler');
+        let handler = this.state.handlerActive,
+            gid = this.state.gid,
+            replaceThis = this.props.replaceThis;
+        if (handler && gid) {
+          this.addValueToHistory(this.props.value);
+          this.props.onChange(handler.url.replace(replaceThis,gid));
+        }
+      },
+
+      // function filterHandlers takes this.state.docType and filters this.props.handlers by type
+      filterHandlers: function(callback) {
+        let docType = this.state.docType;
+        console.log('filterHandlers', docType);
+        let handlerFilter = {};
+        if (docType) {
+          for (let key in this.props.handlers) {
+            if (this.props.handlers[key].type === docType) {
+              handlerFilter[key] = this.props.handlers[key];
+            }
+          }
+        } else {
+          handlerFilter = this.props.handlers;
+        }
+        this.setState({handlerFilter: handlerFilter},callback);
+      },
+
+      enableHandlerSelect: function(callback) {
+        console.log('enableHandlerSelect');
+        //if handlerSelectorDisabled is true, enable it
+        if (this.state.handlerSelectorDisabled) {
+          this.setState({handlerSelectorDisabled: false},callback);
+        } else {
+          callback();
+        }
+      },
+      disableHandlerSelect: function(callback) {
+        console.log('disableHandlerSelect');
+        // if handlerSelectorDisabled is false, disable it
+        if (!this.state.handlerSelectorDisabled) {
+          this.setState({handlerSelectorDisabled: true},callback);
+        } else {
+          callback();
+        }
+      },
+
+      changeHandler: function(callback) {
+        this.setState({ handlerActive: this.state.handlerFilter[this.state.handlerSelectorValue] }, callback);
+      },
+
+      // fires when handler is selected
+      handleChangeHandler: function(e) {
+        this.setState({handlerSelectorValue: e.target.value}, () => {
+          this.changeHandler();
+        });
+      },
+
+      // fires when value changes
+      valueChange: function(e) {
+        let value = e.target.value;
+        if ( this.testValue(value) ) {
+          console.log('valueChange', value);
+          this.setState({hidden: false});
+          this.props.onChange(value);
+          this.setGid(this.matchGid(value), () => {
+            this.setDocType(this.matchDocType(value), () => {
+              this.filterHandlers( () => {
+                this.enableHandlerSelect( () => {
+                  this.changeHandler(
+                    this.runHandler()
+                  );
+                });
+              });
+            });
+          });
+        } else {
+          this.setState({hidden: true});
+          this.props.onChange(value);
+        }
+      },
+
+      testValue(value) {
+        let gid = this.matchGid(value),
+            docType = this.matchDocType(value);
+        
+        console.log('testValue', value, gid, docType);
+        if ( ! gid ) return false; // value matches gid
+        if ( ! docType ) return false; // value has doctype
+        if ( gid === this.state.gid ) return false; // value is not the same as the current gid
+        
+        return true;
+      },
+
+      valueLoad: function(e) {
+        console.log('valueLoad', e.target.value);
+      },
+    
+      render: function() {
+        console.log('render',this.props.value);
+
+        return h('div',{},
+          h('input', {
+            id: this.props.forID,
+            className: this.props.classNameWrapper,
+            type: 'url',
+            value: this.props.value,
+            onChange: this.valueChange,
+            onLoad: this.valueLoad,
+            placeholder: 'Enter URL'
+          }),
+          h('div', {
+              hidden: this.state.hidden
+            },
+            // select with options from this.props.handlers
+            h('select',{
+              onChange: this.handleChangeHandler,
+              disabled: this.state.handlerSelectorDisabled,
+              value: this.state.handlerSelectorValue
+            },
+              h('option',{
+                value: null
+              },'Set Link Type'),
+              Object.keys(this.state.handlerFilter).map(function(key) {
+                var handler = this.state.handlerFilter[key];
+                return h('option',{
+                  value: key
+                },handler.title);
+              }.bind(this))
+            ),
+            // label for input
+            h('button',{
+              htmlFor: this.props.forID + '_url',
+              onClick: this.runHandler
+            },'Convert URL'),
+            h('label', {
+              id: this.props.forID + '_url',
+            },'Change how this link shows up when visited'),
+          )
+
+        )
+      },
+    });
+    
+    var GoogleDocPreivew = createClass({
+      render: function() {
+        return h('div', {},
+          h('strong', {}, this.props.field.get('name','url') + ': '),
+          h('a', {
+            href: this.props.value,
+            target: '_blank'
+          }, this.props.value)
+        );
+      }
+    });
+    
+    var schema = {
+      properties: {
+      },
+    }
+    
+    CMS.registerWidget('gdoc', GoogleDocControl, GoogleDocPreivew, schema);
+    
+    var GoogleDocIdControl = createClass({
+      valueChange: function(e) {
+        let regex = /d\/([^/]*)|id=([^/&]*)/,
+            match = e.target.value.match(regex),
+            id = match ? match[1] || match[2] : false;
+        
+        if (id) {
+          this.props.onChange(id);
+        } else {
+          this.props.onChange(e.target.value);
+        }
+
+      },
+      render: function() {
+        return h('input', {
+                  id: this.props.forID,
+                  className: this.props.classNameWrapper,
+                  type: 'text',
+                  value: this.props.value,
+                  onChange: this.valueChange,
+                  placeholder: 'Enter URL'
+                })
+      },
+    });
+    var GoogleDocIdPreivew = createClass({
+      render: function() {
+        return h('div', {},
+          h('strong', {}, this.props.field.get('name','id') + ': '),
+          this.props.value
+        );
+      }
+    });
+    
+    CMS.registerWidget('gdocId', GoogleDocIdControl, GoogleDocIdPreivew);
+    </script>
+</body>
+</html>

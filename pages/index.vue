@@ -108,6 +108,11 @@
 <script>
 export default {
   layout: 'home',
+  head() {
+    return {
+      script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
+    };
+  },
   async asyncData ({ $content }) {
     const aboutPages = await $content('about').fetch()
     const offerings = await $content('offerings').sortBy('order').fetch()

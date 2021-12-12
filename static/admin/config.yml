@@ -1,0 +1,493 @@
+local_backend: true
+backend:
+  name: github
+  repo: dhornbein/nuxt-peoplemedicine.org
+  branch: master # Branch to update (optional; defaults to master)
+# publish_mode: editorial_workflow
+media_folder: "assets/uploads"
+
+collections:
+  - name: "post" # Used in routes, e.g., /admin/collections/blog
+    label: "Posts" # Used in the UI
+    folder: "content/posts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    editor:
+      preview: false
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "hidden", required: false}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Categories", name: "category", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "string", required: false, hint: "tags separated by spaces"}
+      - label: "Color"
+        name: color
+        widget: select
+        options: ['pink','orange','yellow','cyan','blue','purple','red','green']
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+      - label: "Authors"
+        name: "author"
+        widget: list
+        summary: '{{fields.name}}: {{fields.email}}'
+        default:
+          - {name: Drew Hornbein, email: "drew@peoplemedicine.org", url: "https://dddrew.org"}
+          - {name: Maria Talero, email: "maria@peoplemedicine.org"}
+        fields:
+          - {label: "Name", name: "name", widget: "string"}
+          - {label: "email", name: "email", widget: "string", required: false}
+          - {label: "Website", name: "url", widget: "string", required: false}
+      - label: Related # collection of related fields
+        name: related
+        widget: object
+        required: false
+        summary: '{{field.label}}'
+        fields:
+          - label: "Related Skills"
+            name: "skills"
+            widget: "relation"
+            required: false
+            collection: "skills"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Patterns"
+            name: "patterns"
+            widget: "relation"
+            required: false
+            collection: "patterns"
+            multiple: true
+            search_fields: [title,description,principle]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Resources"
+            name: "resources"
+            widget: "relation"
+            required: false
+            collection: "resource"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Offerings"
+            name: "offerings"
+            widget: "relation"
+            required: false
+            collection: "offerings"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Philosophies"
+            name: "philosophies"
+            widget: "relation"
+            required: false
+            collection: "philosophies"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+      - {label: "License", name: "license", widget: "string", required: false}
+      - {label: "Newsletter Teaser", name: "teaser", widget: "text", required: false, hint: "The sentence that appears above the newsletter"}
+  - name: "resource" # Used in routes, e.g., /admin/collections/blog
+    label: "Resources" # Used in the UI
+    folder: "content/resources" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "hidden", required: false}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Categories", name: "category", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "string", required: false, hint: "tags separated by spaces"}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+      - {label: "Internal Work?", name: "internal", widget: "boolean", required: false}
+      - label: "Authors"
+        name: "author"
+        widget: list
+        summary: '{{fields.name}}: {{fields.email}}'
+        fields:
+          - {label: "Name", name: "name", widget: "string"}
+          - {label: "email", name: "email", widget: "string"}
+          - {label: "Website", name: "url", widget: "string"}
+      - label: File # details about the file
+        name: file
+        widget: object
+        summary: '{{field.label}}'
+        fields:
+          - {label: "Google Doc ID", name: "gdocId", widget: "gdocId", required: false }
+          - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false, hint: Google Docs will automatically generate thumbnails}
+          - {label: "Upload File", name: "url", widget: "file", required: false}
+      - label: "Links"
+        name: "links"
+        widget: "list"
+        summary: '{{fields.text}} <{{fields.href}}>'
+        fields:
+          - {label: "Text", name: "text", widget: "string"}
+          - {label: "Link URL", name: "href", widget: "gdoc",hint: Enter Google Doc edit link for options}
+          - label: "Link Behavior"
+            name: "target"
+            widget: select
+            required: false
+            options:
+              - { label: "Same", value: "" }
+              - { label: "New", value: "_blank" }
+          - label: "CSS Class"
+            name: "class"
+            widget: "select"
+            multiple: true
+            required: false
+            options:
+              - { label: "Primary Color", value: "is-primary" }
+              - { label: "Blue", value: "is-info" }
+              - { label: "Yellow", value: "is-warning" }
+              - { label: "Green", value: "is-success" }
+              - { label: "red", value: "is-danger" }
+              - { label: "Lightened", value: "is-light" }
+              - { label: "Outlined", value: "is-outlined" }
+              - { label: "Inverted", value: "is-inverted" }
+      - label: Related # collection of related fields
+        name: related
+        widget: object
+        required: false
+        summary: '{{field.label}}'
+        fields:
+          - label: "Related Skills"
+            name: "skills"
+            widget: "relation"
+            required: false
+            collection: "skills"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Patterns"
+            name: "patterns"
+            widget: "relation"
+            required: false
+            collection: "patterns"
+            multiple: true
+            search_fields: [title,description,principle]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Resources"
+            name: "resources"
+            widget: "relation"
+            required: false
+            collection: "resource"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Offerings"
+            name: "offerings"
+            widget: "relation"
+            required: false
+            collection: "offerings"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Philosophies"
+            name: "philosophies"
+            widget: "relation"
+            required: false
+            collection: "philosophies"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+      - label: "Citations"
+        name: "citations"
+        widget: "list"
+        required: false
+        summary: '{{fields.text}}'
+        field: {label: Text, name: "text", widget: text}
+      - {label: "License", name: "license", widget: "string", required: false}
+  - name: "offerings" 
+    label: "Offerings" # Used in the UI
+    folder: "content/offerings" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+      - label: "Deliverables"
+        name: "deliverables"
+        widget: "list"
+        required: false
+        collapsed: false
+        summary: '{{fields.text}}'
+        field: {label: Text, name: text, widget: text}
+      - label: Related # collection of related fields
+        name: related
+        widget: object
+        required: false
+        summary: '{{field.label}}'
+        fields:
+          - label: "Related Skills"
+            name: "skills"
+            widget: "relation"
+            required: false
+            collection: "skills"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Patterns"
+            name: "patterns"
+            widget: "relation"
+            required: false
+            collection: "patterns"
+            multiple: true
+            search_fields: [title,description,principle]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Resources"
+            name: "resources"
+            widget: "relation"
+            required: false
+            collection: "resource"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Offerings"
+            name: "offerings"
+            widget: "relation"
+            required: false
+            collection: "offerings"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Philosophies"
+            name: "philosophies"
+            widget: "relation"
+            required: false
+            collection: "philosophies"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+      - {label: "Publish Date", name: "date", widget: "date"}
+      - {label: "Categories", name: "category", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "string", required: false, hint: "tags separated by spaces"}
+      - {label: "Icon", name: "icon", widget: "image"}
+      - {label: "Color Icon", name: "icon-color", widget: "image"}
+      - label: "Color"
+        name: color
+        widget: select
+        options: ['pink','orange','yellow','cyan','blue','purple','red','green']
+      - {label: "Order", name: "order", widget: "number", value_type: int, required: false}
+  - name: "philosophies" 
+    label: "Philosophies"
+    folder: "content/philosophies"
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Core principle", name: "principle", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+      - label: Related # collection of related fields
+        name: related
+        widget: object
+        required: false
+        summary: '{{field.label}}'
+        fields:
+          - label: "Related Skills"
+            name: "skills"
+            widget: "relation"
+            required: false
+            collection: "skills"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Patterns"
+            name: "patterns"
+            widget: "relation"
+            required: false
+            collection: "patterns"
+            multiple: true
+            search_fields: [title,description,principle]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Resources"
+            name: "resources"
+            widget: "relation"
+            required: false
+            collection: "resource"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Offerings"
+            name: "offerings"
+            widget: "relation"
+            required: false
+            collection: "offerings"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Philosophies"
+            name: "philosophies"
+            widget: "relation"
+            required: false
+            collection: "philosophies"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+      - {label: "Publish Date", name: "date", widget: "date"}
+      - {label: "Categories", name: "category", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "string", required: false, hint: "tags separated by spaces"}
+  - name: "patterns" 
+    label: "Patterns"
+    folder: "content/patterns"
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Core principle", name: "principle", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+      - label: Related # collection of related fields
+        name: related
+        widget: object
+        required: false
+        summary: '{{field.label}}'
+        fields:
+          - label: "Related Skills"
+            name: "skills"
+            widget: "relation"
+            required: false
+            collection: "skills"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Patterns"
+            name: "patterns"
+            widget: "relation"
+            required: false
+            collection: "patterns"
+            multiple: true
+            search_fields: [title,description,principle]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Resources"
+            name: "resources"
+            widget: "relation"
+            required: false
+            collection: "resource"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Offerings"
+            name: "offerings"
+            widget: "relation"
+            required: false
+            collection: "offerings"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Philosophies"
+            name: "philosophies"
+            widget: "relation"
+            required: false
+            collection: "philosophies"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+      - {label: "Publish Date", name: "date", widget: "date"}
+      - {label: "Categories", name: "category", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "string", required: false, hint: "tags separated by spaces"}
+  - name: "skills" 
+    label: "Skills"
+    folder: "content/skills"
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text", required: false, hint: "Short 1-2 sentence summary"}
+      - {label: "Pain Point", name: "painpoint", widget: "text", required: false}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+      - label: Related # collection of related fields
+        name: related
+        widget: object
+        required: false
+        summary: '{{field.label}}'
+        fields:
+          - label: "Related Skills"
+            name: "skills"
+            widget: "relation"
+            required: false
+            collection: "skills"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Patterns"
+            name: "patterns"
+            widget: "relation"
+            required: false
+            collection: "patterns"
+            multiple: true
+            search_fields: [title,description,principle]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Resources"
+            name: "resources"
+            widget: "relation"
+            required: false
+            collection: "resource"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Offerings"
+            name: "offerings"
+            widget: "relation"
+            required: false
+            collection: "offerings"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+          - label: "Related Philosophies"
+            name: "philosophies"
+            widget: "relation"
+            required: false
+            collection: "philosophies"
+            multiple: true
+            search_fields: [title,description]
+            display_fields: [title]
+            value_field: "{{slug}}"
+      - {label: "Publish Date", name: "date", widget: "date"}
+      - {label: "Categories", name: "category", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "string", required: false, hint: "tags separated by spaces"}
+
+  - name: about
+    label: About Pages
+    label_singular: Page
+    folder: content/about
+    create: true
+    summary: "{{title}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Type", name: "type", widget: "hidden", default: about, required: false}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+      - {label: "Permalink", name: "permalink", widget: "string", required: false}
+      - label: "Redirect From"
+        name: "redirect_from"
+        widget: "list"
+        required: false
+        collapsed: false
