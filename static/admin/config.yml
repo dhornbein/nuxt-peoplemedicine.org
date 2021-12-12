@@ -3,6 +3,7 @@ backend:
   name: git-gateway
   repo: dhornbein/nuxt-peoplemedicine.org
   branch: master # Branch to update (optional; defaults to master)
+  site_domain: sharp-hugle-0aae28.netlify.app
 # publish_mode: editorial_workflow
 media_folder: "static/img/uploads"
 public_folder: /img/uploads
