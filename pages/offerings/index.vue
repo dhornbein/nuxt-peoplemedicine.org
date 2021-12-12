@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-dark min-h-screen">
+  <div class="bg-dark min-h-screen">
     <offeringsGrid :offerings="offerings"></offeringsGrid>
 
     <div class="xl:content xl:mx-auto flex justify-center py-10">
@@ -32,16 +32,12 @@
         </article>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <script>
-import offeringsGrid from '@/components/offerings-grid.vue'
 
 export default {
-  components: {
-    offeringsGrid
-  },
   async asyncData ({ $content }) {
     const offerings = await $content('offerings').sortBy('order').fetch()
 

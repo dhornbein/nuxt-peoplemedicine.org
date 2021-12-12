@@ -98,7 +98,9 @@
     </section>
 
     <section class="bg-dark p-10">
-      <h2 class="text-brand-green-400 text-3xl font-bold uppercase text-center">Offerings</h2>
+      <h2 class="text-brand-green-400 text-3xl font-bold uppercase text-center mb-10"><nuxt-link to="/offerings">Offerings</nuxt-link></h2>
+      <offeringsGrid :offerings="offerings"></offeringsGrid>
+
     </section>
 
     <section class="bg-dark p-10 flex justify-center items-center">
@@ -113,9 +115,11 @@
 export default {
   async asyncData ({ $content }) {
     const aboutPages = await $content('about').fetch()
+    const offerings = await $content('offerings').sortBy('order').fetch()
 
     return {
-      aboutPages
+      aboutPages,
+      offerings
     }
   },
   data() {
