@@ -4,7 +4,8 @@ backend:
   repo: dhornbein/nuxt-peoplemedicine.org
   branch: master # Branch to update (optional; defaults to master)
 # publish_mode: editorial_workflow
-media_folder: "assets/uploads"
+media_folder: "static/img/uploads"
+public_folder: /img/uploads
 
 collections:
   - name: "post" # Used in routes, e.g., /admin/collections/blog
