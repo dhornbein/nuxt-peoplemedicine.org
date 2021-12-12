@@ -11,7 +11,7 @@
       <label class="text-sm font-mono" :for="id" v-if="label">{{ label }}</label>
     
       <div class="flex flex-col md:flex-row">
-          <input class="p-2 text-lg rounded-md border border-gray-100 shadow-inner flex-grow text-dark mb-2 md:mb-0 md:mr-2" type="email" name="email" :id="id" :placeholder="placeholder" required/>
+          <input class="p-2 text-lg rounded-md border border-gray-400 shadow-inner flex-grow text-dark mb-2 md:mb-0 md:mr-2" type="email" name="email" :id="id" :placeholder="placeholder" required/>
           <input class="p-2 text-lg rounded-md border flex-shrink bg-brand-red text-white cursor-pointer hover:bg-red-800" type="submit" value="Subscribe" />
       </div>
       <input type="hidden" value="1" name="embed" />
