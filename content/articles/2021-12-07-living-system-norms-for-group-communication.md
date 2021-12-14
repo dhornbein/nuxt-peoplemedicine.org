@@ -28,33 +28,4 @@ A wetland acts as a natural water filter, trapping sediments and converting poll
 
 - - -
 
-<div class="columns is-multiline is-centered">
-  {% for skill in page.related.skills %}
-    {%- assign item = site.skills | where: 'slug', skill | first -%}
-    <div class="column is-one-third-tablet">
-      <a href="#{{ item.slug }}" data-modal-open="{{ item.slug }}" class="box is-fullheight is-flex is-flex-direction-column is-align-content-space-between">
-        <p class="title is-5">{{ item.title }}</p>
-        {%- if item.painpoint -%}
-        <p class="has-text-danger"><strong class="is-family-monospace is-size-7">Pain Point</strong><br>{{ item.painpoint }}</p>
-        {%- endif -%}
-      </a>
-    </div>
-  {% endfor %}
-</div>
-
-- - -
-
-<div data-modal-group>
-{% for skill in page.related.skills %}
-  {%- assign item = site.skills | where: 'slug', skill | first -%}
-  <section class="block" id="{{ item.slug }}" data-modal-el="card" data-modal-nav="true">
-    <h3 class="title is-4" data-modal-title>{{ item.title }}</h3>
-    <main data-modal-body>
-      {%- if item.painpoint -%}
-      <p class="px-4 has-text-danger"><strong class="is-family-monospace is-size-7">Pain Point</strong><br>{{ item.painpoint }}</p>
-      {%- endif -%}
-      {{ item.content | markdownify }}
-    </main>
-  </section>
-{% endfor %}
-</div>
+<content-grid :relations="related.skills" subtitle="painpoint" display local>Painpoint</content-grid>
