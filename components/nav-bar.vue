@@ -99,7 +99,7 @@ export default {
 
 <style lang="scss" scoped>
 nav {
-  @apply bg-dark text-brand-cream w-screen flex p-2 relative;
+  @apply bg-dark text-brand-cream w-full flex p-2 relative;
 
   ul {
     li {
