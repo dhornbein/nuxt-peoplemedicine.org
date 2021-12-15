@@ -1,7 +1,9 @@
 <template>
   <article class="bg-brand-cream">
-    <header class="p-10 text-center" :class="[ article.color ? 'bg-brand-' + article.color : null ]">
-      <h1 class="text-4xl capitalize">{{ article.title }}</h1>
+    <header class="header" :class="headerClass" :style="headerStyle">
+      <div class="header-content">
+        <h1 class="text-4xl capitalize">{{ article.title }}</h1>
+      </div>
     </header>
     <main class="container mx-auto py-10 px-5">
       <nuxt-content :document="article" class="max-w-prose mx-auto" />
@@ -26,6 +28,22 @@ export default {
     }
 
     return { article, params }
+  },
+  computed: {
+    headerClass() {
+      let bgColor = this.article.color ? 'bg-brand-' + this.article.color : false
+      let textColor = this.article.color ? 'text-brand-' + this.article.color : false
+      return {
+        [bgColor]: bgColor,
+        [textColor]: textColor,
+        'has-background': this.article.featuredImg,
+      }
+    },
+    headerStyle() {
+      return {
+        backgroundImage: this.article.featuredImg ? 'url(' + this.article.featuredImg + ')' : null,
+      }
+    },
   },
   head() {
     return {
@@ -63,3 +81,26 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.header {
+  @apply border-b-4 border-current;
+}
+
+.header:not(.has-background) {
+  @apply px-5 py-10 md:text-center text-dark border-b;
+}
+
+.header.has-background {
+  @apply p-0 md:py-0 md:px-5 min-h-[40vh] flex flex-col justify-center items-center bg-cover bg-no-repeat bg-center;
+  
+  h1 {
+    @apply text-white;
+  }
+
+  .header-content {
+    @apply p-5 bg-opacity-70 bg-dark bg-gradient-to-b from-dark max-w-prose h-full w-full md:w-auto flex-grow;
+  }
+}
+
+</style>

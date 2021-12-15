@@ -22,9 +22,14 @@ collections:
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Categories", name: "category", widget: "string", required: false}
       - {label: "Tags", name: "tags", widget: "string", required: false, hint: "tags separated by spaces"}
+      - label: "Featured Image"
+        name: "featuredImg"
+        widget: "image"
+        required: false
       - label: "Color"
         name: color
         widget: select
+        required: false
         options: ['pink','orange','yellow','cyan','blue','purple','red','green']
       - {label: "Body", name: "body", widget: "markdown", required: false}
       - label: "Authors"
