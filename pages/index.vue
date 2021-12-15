@@ -1,5 +1,5 @@
 <template>
-  <main class="smooth-scroll">
+  <main>
 
     <section class="min-h-screen bg-dark overflow-hidden h-screen flex flex-col items-stretch">
       
@@ -107,7 +107,7 @@
 
 <script>
 export default {
-  layout: 'home',
+  layout: 'minimum',
   head() {
     return {
       script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],

@@ -1,7 +1,10 @@
 <template>
   <nav :class="wrapperClass">
     <div :class="tileClass" v-for="offering in offerings" :key="offering.slug">
-      <a class="p-5 h-full rounded-md flex flex-col items-center justify-between text-center transition-all scale-100 hover:scale-105" :class="colors[offering.color]" :href="href(offering)">
+      <a class="p-5 h-full rounded-md flex flex-col items-center justify-between text-center transition-all scale-100 hover:scale-105" 
+         :class="colors[offering.color]" 
+         :href="href(offering)"
+      >
         <img :src="offering.icon" :alt="'illustrated icon'" class="max-h-40 flex-shrink">
         <p class="text-4xl font-bold">{{ offering.title }}</p>
         <p class="text-lg">{{ offering.description }}</p>
@@ -35,7 +38,7 @@ export default {
   },
   methods: {
     href(offering) {
-      return (this.linkPrefix) ? this.linkPrefix + offering.slug : `/offerings/#${offering.slug}`
+      return (this.linkPrefix) ? this.linkPrefix + offering.slug : `/offerings#${offering.slug}`
     }
   },
   computed: {

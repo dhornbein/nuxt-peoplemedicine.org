@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-brand-cream p-10 lg:container mx-auto">
+  <main class="p-10 lg:container mx-auto">
     <h1 class="text-4xl text-center">Connect with us</h1>
     <div class="flex flex-wrap justify-around px-5 py-20">
       <a class="mb-16 md:mb-0 md:w-1/3 bg-dark rounded-lg shadow-lg p-5 last:pr-16 first:pl-16 group relative transition hover:text-brand-cream hover:scale-105" :class="person.color"

@@ -3,7 +3,7 @@
     <header class="header" :class="headerClass" :style="headerStyle">
       <div class="header-content">
         <h1 class="text-4xl capitalize">{{ article.title }}</h1>
-        <byLine :authors="article.authors" class="mt-4 pt-4 border-t border-current"></byLine>
+        <byLine :authors="article.authors" class="mt-4 pt-4 border-t border-current" v-if="article.authors"></byLine>
       </div>
     </header>
     <main class="container mx-auto py-10 px-5">
@@ -89,10 +89,10 @@ export default {
 <style lang="scss" scoped>
 
 .background {
-  @apply bg-bottom bg-no-repeat bg-contain absolute inset-0 overflow-hidden opacity-40;
+  @apply bg-bottom bg-no-repeat bg-cover absolute left-0 bottom-0 right-0 overflow-hidden opacity-20 h-screen;
 
   .gradient {
-    @apply bg-gradient-to-b from-brand-cream via-brand-cream absolute left-0 right-0 bottom-0 min-h-screen;
+    @apply bg-gradient-to-b from-brand-cream absolute left-0 right-0 bottom-0 h-full;
   }
 }
 

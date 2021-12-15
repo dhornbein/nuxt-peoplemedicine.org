@@ -6,6 +6,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  @apply bg-brand-cream;
+}
+
 .nuxt-content {
   p:not(:last-child):not([class*="mb-"]),
   ul:not(:last-child):not([class*="mb-"]) {
