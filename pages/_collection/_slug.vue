@@ -1,5 +1,5 @@
 <template>
-  <article class="bg-brand-cream">
+  <article class="bg-brand-cream relative">
     <header class="header" :class="headerClass" :style="headerStyle">
       <div class="header-content">
         <h1 class="text-4xl capitalize">{{ article.title }}</h1>
@@ -7,6 +7,9 @@
       </div>
     </header>
     <main class="container mx-auto py-10 px-5">
+      <div class="background" v-if="this.article.featuredImg" :style="headerStyle">
+        <div class="gradient"></div>
+      </div>
       <nuxt-content :document="article" class="max-w-prose mx-auto" />
     </main>
   </article>
@@ -84,6 +87,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.background {
+  @apply bg-bottom bg-no-repeat bg-contain absolute inset-0 overflow-hidden opacity-40;
+
+  .gradient {
+    @apply bg-gradient-to-b from-brand-cream via-brand-cream absolute left-0 right-0 bottom-0 min-h-screen;
+  }
+}
+
 .header {
   @apply border-b-4 border-current;
 
