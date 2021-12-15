@@ -3,6 +3,7 @@
     <header class="header" :class="headerClass" :style="headerStyle">
       <div class="header-content">
         <h1 class="text-4xl capitalize">{{ article.title }}</h1>
+        <byLine :authors="article.authors" class="mt-4 pt-4 border-t border-current"></byLine>
       </div>
     </header>
     <main class="container mx-auto py-10 px-5">
@@ -85,6 +86,10 @@ export default {
 <style lang="scss" scoped>
 .header {
   @apply border-b-4 border-current;
+
+  .header-content {
+    @apply max-w-3xl mx-auto text-left;
+  }
 }
 
 .header:not(.has-background) {
@@ -99,7 +104,7 @@ export default {
   }
 
   .header-content {
-    @apply p-5 bg-opacity-70 bg-dark bg-gradient-to-b from-dark max-w-prose h-full w-full md:w-auto flex-grow;
+    @apply p-5 bg-opacity-70 bg-dark bg-gradient-to-b from-dark h-full w-full md:w-auto flex-grow flex flex-col justify-center;
   }
 }
 

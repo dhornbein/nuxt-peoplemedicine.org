@@ -33,7 +33,7 @@ collections:
         options: ['pink','orange','yellow','cyan','blue','purple','red','green']
       - {label: "Body", name: "body", widget: "markdown", required: false}
       - label: "Authors"
-        name: "author"
+        name: "authors"
         widget: list
         summary: '{{fields.name}}: {{fields.email}}'
         default:
@@ -112,13 +112,15 @@ collections:
       - {label: "Body", name: "body", widget: "markdown", required: false}
       - {label: "Internal Work?", name: "internal", widget: "boolean", required: false}
       - label: "Authors"
-        name: "author"
+        name: "authors"
         widget: list
         summary: '{{fields.name}}: {{fields.email}}'
         fields:
           - {label: "Name", name: "name", widget: "string"}
           - {label: "email", name: "email", widget: "string"}
           - {label: "Website", name: "url", widget: "string"}
+        default:
+          - {name: People Medicine, email: "hello@peoplemedicine.org"}
       - label: File # details about the file
         name: file
         widget: object
