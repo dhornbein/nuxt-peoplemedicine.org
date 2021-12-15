@@ -3,6 +3,7 @@
     <navBar></navBar>
     <Nuxt />
     <footerDefault></footerDefault>
+    <modal></modal>
   </main>
 </template>
 
