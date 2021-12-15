@@ -47,13 +47,13 @@ export default {
 </script>
 
 <style lang="scss">
-.slide-fade-enter-active {
+.slide-fade-enter-active .modal-container {
   transition: all .3s ease;
 }
-.slide-fade-leave-active {
+.slide-fade-leave-active .modal-container {
   transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
-.slide-fade-enter, .slide-fade-leave-to {
+.slide-fade-enter .modal-container, .slide-fade-leave-to .modal-container {
   transform: translateY(30px);
   opacity: 0;
 }
