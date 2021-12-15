@@ -4,7 +4,7 @@
       <h1 class="text-4xl capitalize">{{ article.title }}</h1>
     </header>
     <main class="container mx-auto py-10 px-5">
-      <nuxt-content :document="article" />
+      <nuxt-content :document="article" class="max-w-prose mx-auto" />
     </main>
   </article>
 </template>
