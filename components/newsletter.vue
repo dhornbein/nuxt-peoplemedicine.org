@@ -1,6 +1,8 @@
 <template>
-  <div class="p-5 bg-white rounded-md shadow-lg max-w-screen-sm mx-auto" :class="childClass">
-    <p class="mb-5" v-if="description">{{ description }}</p>
+  <div>
+    <div class="mb-5" v-if="$slots.default">
+      <slot></slot>
+    </div>
     <form
       action="https://buttondown.email/api/emails/embed-subscribe/people-medicine"
       method="post"
@@ -23,10 +25,6 @@
 <script>
 export default {
   props: {
-    description: {
-      type: String,
-      default: 'Let us help you make your teams more resilient and your work more regenerative for you, your organization and the people you serve.'
-    },
     label: {
       type: String,
       default: 'Subscribe to our newsletter'
@@ -37,9 +35,6 @@ export default {
     },
     tags: {
       type: Array
-    },
-    childClass: {
-      type: String
     },
   },
   data() {

@@ -1,8 +1,8 @@
 <template>
   <footer>
-    <div class="container mx-auto my-10 px-4">
+    <div class="container mx-auto my-10 px-2">
 
-      <newsletter label="Newsletter:" :tags="['footer']" childClass="" />
+      <newsletter class="p-5 bg-white rounded-md shadow-lg max-w-screen-sm mx-auto" label="Join our Newsletter" :tags="['footer']" childClass="" />
 
     </div>
     <div class="text-center" xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">

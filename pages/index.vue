@@ -29,7 +29,9 @@
 
       <div class="container mx-auto my-10 px-4">
 
-        <newsletter label="We'll write to you:" :tags="['homepage']" childClass="" />
+        <newsletter label="We'll write to you:" :tags="['homepage']">
+          Let us help you make your teams more resilient and your work more regenerative for you, your organization and the people you serve.
+        </newsletter>
 
       </div>
 
