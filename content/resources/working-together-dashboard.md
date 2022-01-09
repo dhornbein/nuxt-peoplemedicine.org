@@ -5,7 +5,7 @@ date: 2021-12-02T06:14:41.892Z
 category: null
 tags: dashboard teams norms
 internal: true
-author:
+authors:
   - name: Drew Hornbein
     email: drew@peoplemedicine.org
     url: https://peoplemedicine.org

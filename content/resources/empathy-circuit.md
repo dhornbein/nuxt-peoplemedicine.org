@@ -6,7 +6,7 @@ date: 2021-12-01T06:07:57.278Z
 category: null
 tags: one-pager print
 internal: true
-author:
+authors:
   - name: People Medicine
     email: hello@peoplemedicine.org
     url: https://peoplemedicine.org
@@ -43,4 +43,9 @@ The circuit works by using a strong filter (general and positive language only) 
 
 It has three parts: Structured Statements, Trust-Sized Requests, and Mirroring.
 
-{% include thumbnail.html class="has-drop-shadow" href=page.links.first.href size=800 alt="picture of the empathy circuit one pager" %}
+<BaseThumbnail
+  class="my-4"
+  :src="file.gdocId"
+  :href="links[0].href"
+  size="800"
+  alt="picture of the empathy circuit one pager">Download this one pager PDF</BaseThumbnail>
