@@ -1,8 +1,8 @@
 <template>
-  <main class="collection" :class="cssClass">
+  <main class="collection collection-resources" :class="cssClass">
     <header class="collection__header">
-      <nuxt-link :to="`/${$route.params.collection}`">
-        <h1 class="capitalize"><CollectionIcon :name="$route.params.collection" class="mr-2" />{{ $route.params.collection }}</h1>
+      <nuxt-link to="/resources">
+        <h1 class="capitalize"><CollectionIcon name="resources" class="mr-2" />Resources</h1>
       </nuxt-link>
     </header>
 
@@ -18,14 +18,15 @@ export default {
   computed: {
     cssClass() {
       const slug = this.$route.params.slug ? this.$route.params.slug : false
-      return [
-        `collection-${this.$route.params.collection}`,
-        {
+      return {
           'slug': slug,
         }
-      ]
     }
     
   },
 }
 </script>
+
+<style lang="scss">
+// styled in /pages/_collection.vue
+</style>

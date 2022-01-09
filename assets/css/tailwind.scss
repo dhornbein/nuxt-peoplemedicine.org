@@ -39,3 +39,37 @@ body {
     }
   }
 }
+
+// COLLECTIONS
+
+
+.collection {
+  @apply bg-brand-cream;
+  
+  .collection__header {
+    @apply p-10 text-center mb-5 transition-all;
+    h1 {
+      @apply text-4xl font-bold;
+    }
+  }
+  
+  &.slug {
+    .collection__header {
+      @apply p-2 text-left mb-0;
+      h1 {
+        @apply text-lg;
+      }
+    }
+  }
+
+  &.collection-resources {
+    .collection__header {
+      @apply bg-brand-blue-400;
+    }
+  }
+  &.collection-philosophies {
+    .collection__header {
+      @apply bg-brand-green-500;
+    }
+  }
+}
