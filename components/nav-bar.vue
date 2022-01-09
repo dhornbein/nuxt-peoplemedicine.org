@@ -109,7 +109,7 @@ export default {
   @apply h-14;
 }
 nav {
-  @apply bg-dark text-brand-cream w-full flex p-2 relative transition-all;
+  @apply bg-dark text-brand-cream w-full flex p-2 transition-all fixed top-0 left-0 right-0 z-50;
 
   ul {
     li {
@@ -126,7 +126,7 @@ nav {
   }
   
   &:not(.is-open) { // default navigation
-    @apply h-14 items-center justify-between lg:justify-center;
+    @apply h-14 justify-between lg:justify-center;
     ul {
       @apply sm:justify-items-start md:justify-around flex-grow md:flex md:w-5/12 lg:flex-shrink;
       li {

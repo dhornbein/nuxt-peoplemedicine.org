@@ -1,7 +1,6 @@
 <template>
   <main>
-
-    <section class="min-h-screen bg-dark overflow-hidden h-screen flex flex-col items-stretch">
+    <section class="bg-dark overflow-hidden h-screen max-h-[85vh] flex flex-col items-stretch">
       
       <div class="flex flex-grow flex-col md:flex-row justify-center items-center">
         <div class="flex flex-col justify-center">
@@ -12,10 +11,6 @@
           <p class="text-base md:text-2xl text-brand-orange mt-3 mb-5">{{ tagline }}</p>
           <a :href="'mailto:' + email" class="text-brand-green-400 hover:text-brand-cream">{{ email }}</a>
         </div>
-      </div>
-
-      <div class="flex justify-evenly items-center">
-        <navBar />
       </div>
     </section>
 
@@ -107,7 +102,7 @@
 
 <script>
 export default {
-  layout: 'minimum',
+  layout: 'default',
   head() {
     return {
       script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
