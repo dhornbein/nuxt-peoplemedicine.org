@@ -1,22 +1,17 @@
 <template>
-  <main class="bg-brand-cream">
-    <header class="p-10 text-center mb-5">
-      <h1 class="text-4xl capitalize"><CollectionIcon :name="params.collection" class="mr-2" />{{ params.collection }}</h1>
-    </header>
-    <div class="flex flex-col justify-center px-2 pb-10 ">
-      <article class=""
-        v-for="article in articles" :key="article.slug">
-        <div class="p-5 mb-5 bg-white rounded-lg shadow-lg h-full flex flex-col justify-between border-l-4" :class="colors(article)['border']">
-          <h2 class="text-2xl hover:text-brand-red">
-            <nuxt-link :to="link(article.slug)">
-              {{ article.title }}
-            </nuxt-link>
-          </h2>
-          <p v-if="false">{{ article.description ? article.description : article.excerpt }}</p>
-        </div>
-      </article>
-    </div>
-  </main>
+  <div class="flex flex-col justify-center px-2 pb-10 ">
+    <article class=""
+      v-for="article in articles" :key="article.slug">
+      <div class="p-5 mb-5 bg-white rounded-lg shadow-lg h-full flex flex-col justify-between border-l-4" :class="colors(article)['border']">
+        <h2 class="text-2xl hover:text-brand-red">
+          <nuxt-link :to="link(article.slug)">
+            {{ article.title }}
+          </nuxt-link>
+        </h2>
+        <p v-if="false">{{ article.description ? article.description : article.excerpt }}</p>
+      </div>
+    </article>
+  </div>
 </template>
 
 <script>
