@@ -65,7 +65,7 @@ html.modal-open {
   @apply fixed w-screen h-screen opacity-50 bg-purple-900 inset-0;
 }
 .modal {
-  @apply fixed w-screen h-screen -inset-1 flex justify-center items-center transition-all;
+  @apply fixed w-screen h-screen -inset-1 flex justify-center items-center transition-all z-50;
 
   .modal-close {
     @apply absolute -top-5 -right-5 m-2 w-10 h-10 z-10 bg-brand-cream rounded-full p-1;
@@ -76,7 +76,7 @@ html.modal-open {
   }
 
   .modal-container {
-    @apply relative bg-brand-cream max-w-prose p-5 md:p-10 max-h-[95vh] max-w-[95vw] md:max-h-[90vh] md:max-w-[90vw] flex flex-col;
+    @apply relative bg-brand-cream rounded-md max-w-prose p-5 md:p-10 max-h-[95vh] w-[95vw] md:max-h-[90vh] flex flex-col;
     
     .modal-body {
       @apply max-h-full overflow-y-auto flex-shrink;
