@@ -25,3 +25,17 @@ body {
     }
   }
 }
+
+.btn {
+  @apply border border-brand-blue-400 text-brand-blue-400 rounded-md px-3 py-1;
+  &:hover {
+    @apply bg-brand-blue-400;
+  }
+
+  &.is-primary {
+    @apply border-brand-pink bg-brand-pink text-dark;
+    &:hover {
+      @apply bg-white;
+    }
+  }
+}
