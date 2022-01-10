@@ -11,7 +11,6 @@
 export default {
   props: {
     href: {
-      type: String,
       default: false,
     },
     alt: {
@@ -22,8 +21,7 @@ export default {
       type: String, // URL or google drive ID
       default: '',
     },
-    size: {
-      type: String, // 123 | 123x123 | x123
+    size: { // 123 | 123x123 | x123
       default: '320'
     }
   },
