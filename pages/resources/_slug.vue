@@ -1,12 +1,29 @@
 <template>
   <article class="bg-brand-cream relative">
     <header class="header" :class="headerClass" :style="headerStyle">
+      <div class="thumbnail h-28 -mt-8 overflow-hidden px-2 pb-2 mb-4 border-b border-brand-blue-400">
+        <BaseThumbnail
+          class="shadow-md m-2 transition-transform"
+          :src="thumbnailSrc(article.file)"
+          :alt="`Image of the ${article.title} resource`" />
+      </div>
       <div class="header-content">
         <h1 class="text-4xl capitalize">{{ article.title }}</h1>
         <byLine :authors="article.authors" class="mt-4 pt-4 border-t border-current" v-if="article.authors"></byLine>
       </div>
     </header>
     <main class="container mx-auto py-10 px-5">
+      <div class="buttons flex flex-wrap gap-2 mb-4">
+        <a
+          class="btn"
+          :class="{
+            'is-primary': idx === 0,
+          }"
+          v-for="(link, idx) in article.links" :key="link.text"
+          :href="link.href"
+          :target="link.target"
+        >{{ link.text }}</a>
+      </div>
       <div class="background" v-if="this.article.featuredImg" :style="headerStyle">
         <div class="gradient"></div>
       </div>
@@ -33,6 +50,14 @@ export default {
     }
 
     return { article, params }
+  },
+  methods: {
+    thumbnailSrc(file){
+      if (file.thumbnail) return file.thumbnail;
+      if (file.gdocId) return file.gdocId;
+      if (file.url) return file.url;
+      return '/images/placeholder.png';
+    },
   },
   computed: {
     headerClass() {
@@ -98,7 +123,7 @@ export default {
 }
 
 .header {
-  @apply border-b-4 border-current;
+  @apply border-b-4 border-brand-blue-400 bg-brand-blue-500;
 
   .header-content {
     @apply max-w-3xl mx-auto text-left;
