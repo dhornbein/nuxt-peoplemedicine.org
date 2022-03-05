@@ -4,10 +4,10 @@
       class="p-5 mt-12 bg-white rounded-lg shadow-lg h-full flex flex-col justify-between border-l-4"
       :class="colors(article)['border']"
       v-for="article in articles" ref="articles" :key="article.slug">
-      <div class="thumbnail h-16 -mt-14 overflow-hidden px-2 pb-2 mb-4 border-b border-gray-200">
+      <div class="thumbnail h-32 -mt-14 overflow-hidden px-2 pb-2 mb-4 border-b border-gray-200">
         <nuxt-link :to="link(article.slug)">
           <BaseThumbnail
-            class="shadow-md m-2 transition-transform"
+            class="m-2 mt-4 transition-transform paper-stack inline-block"
             :src="thumbnailSrc(article.file)"
             :alt="`Image of the ${article.title} resource`" />
         </nuxt-link>

@@ -3,7 +3,7 @@
     <header class="header" :class="headerClass" :style="headerStyle">
       <div class="thumbnail h-28 -mt-8 overflow-hidden px-2 pb-2 mb-4 border-b border-brand-blue-400">
         <BaseThumbnail
-          class="shadow-md m-2 transition-transform"
+          class="m-2 mt-4 transition-transform paper-stack inline-block"
           :src="thumbnailSrc(article.file)"
           :alt="`Image of the ${article.title} resource`" />
       </div>
