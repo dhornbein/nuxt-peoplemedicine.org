@@ -81,6 +81,12 @@ body {
     }
   }
 
+  &.collection-articles {
+    .collection__header {
+      @apply bg-brand-purple;
+    }
+  }
+
   &.collection-resources {
     .collection__header {
       @apply bg-brand-blue-400;

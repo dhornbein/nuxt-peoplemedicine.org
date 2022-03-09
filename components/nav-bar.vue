@@ -1,6 +1,6 @@
 <template>
   <div class="nav-wrapper">
-    <nav class="nav" :class="{'is-open': mobileMenuOpen}">
+    <nav class="nav-main" :class="{'is-open': mobileMenuOpen}">
     
       <nuxt-link to="/" class="md:order-2 flex items-center">
           <img src="/img/web-logo-circle-color-shape.svg" class="max-h-10">
@@ -104,11 +104,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.nav-padding {
+  @apply pt-16;
+}
 .nav-wrapper {
   @apply h-14;
 }
-nav {
+.nav-main {
   @apply bg-dark text-brand-cream w-full flex p-2 transition-all fixed top-0 left-0 right-0 z-50;
 
   ul {

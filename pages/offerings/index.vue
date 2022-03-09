@@ -4,7 +4,7 @@
 
     <div class="xl:content xl:mx-auto flex justify-center py-10">
       <nav class="w-32 flex-grow-0">
-        <ul class="sticky top-0 h-screen flex flex-col justify-between">
+        <ul class="sticky top-0 h-screen flex flex-col justify-between nav-padding">
           <li class="p-3 flex-auto h-1 flex justify-center relative group" v-for="offering in offerings" :key="offering.slug">
             <a :href="'#' + offering.slug">
               <img :src="offering.iconColor" :alt="offering.title" class="max-h-full w-auto">
@@ -14,7 +14,7 @@
         </ul>
       </nav>
       <div class="">
-        <article class="text-brand-cream mb-10 last:mb-0 p-2 md:p-5" :id="offering.slug" v-for="offering in offerings" :key="offering.slug">
+        <article class="text-brand-cream mb-10 last:mb-0 p-2 md:p-5 nav-padding" :id="offering.slug" v-for="offering in offerings" :key="offering.slug">
           <div class="max-w-prose">
             <h1 class="text-2xl md:text-4xl font-bold" :class="colors()[offering.color]">{{ offering.title }}</h1>
             <p class="text-lg uppercase text-white mb-5 mt-2">{{ offering.description }}</p>
