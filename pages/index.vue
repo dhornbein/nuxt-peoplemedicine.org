@@ -54,7 +54,6 @@
     <section class="bg-dark min-h-[80vh] py-[230px] flex flex-col md:flex-row justify-center items-center overflow-hidden">
       <div class="text-brand-cyan min-h-[360px] max-w-[360px] p-5 relative flex flex-col justify-center mb-[180px] md:mb-0 md:mr-[155px]">
         <div class="absolute w-full h-0 bg-no-repeat top-0 left-0 pt-[100%] scale-[2.3] origin-center bg-center" style="background-image:url('/img/web-bio-circle-teal.svg'); background-size: auto 80%;"></div>
-        <div class="absolute h-[300px] w-full bg-no-repeat -top-56 -left-20 origin-center bg-center bg-contain" style="background-image:url('/img/pm-portrait-maria.svg');"></div>
         <h2 class="text-3xl font-bold relative">Maria Talero</h2>
 
         <nuxt-content :document="content.maria" class="" />
@@ -62,7 +61,6 @@
       </div>
       <div class="text-brand-orange min-h-[360px] max-w-[360px] p-5 relative flex flex-col justify-center">
         <div class="absolute w-full h-0 bg-no-repeat top-0 left-0 pt-[100%] scale-[2.3] origin-center bg-center" style="background-image:url('/img/web-bio-circle-orange.svg'); background-size: auto 80%;"></div>
-        <div class="absolute h-[300px] w-full bg-no-repeat -bottom-56 -right-20 origin-center bg-center bg-contain" style="background-image:url('/img/pm-portrait-drew.svg');"></div>
         <h2 class="text-3xl font-bold relative">Drew Hornbein</h2>
 
         <nuxt-content :document="content.drew" class="" />
