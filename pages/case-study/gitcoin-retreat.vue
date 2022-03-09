@@ -1,12 +1,12 @@
 <template>
   <article>
-    <header class="header p-8 mb-8 bg-white">
-      <div class="content flex gap-8 items-center">
-        <figure class="max-w-sm inline-block">
+    <header class="header py-24 px-4 bg-white">
+      <div class="content flex gap-8 items-center flex-col md:flex-row">
+        <figure class="max-w-md inline-block">
           <img src="~/assets/img/gitcoin-logo.svg" alt="GitCoin">
         </figure>
         <div>
-          <h1 class="text-4xl">2022 Retreat Sessions</h1>
+          <h1 class="text-2xl font-bold">2022 Retreat Sessions</h1>
           <p class="max-w-prose text-lg m-auto">
             In early 2022 we hosted two 4 hour sessions for GitCoin, a community of builders, creators, and protocols at the center of open web ecosystems.
           </p>
@@ -15,8 +15,8 @@
     </header>
 
     <section class="">
-      <div class="content flex gap-8 items-center">
-        <div class="email max-w-md m-2 p-4 bg-white shadow-md rounded-md font-mono">
+      <div class="content flex gap-8 items-center flex-col md:flex-row">
+        <div class="email max-w-md p-4 bg-white shadow-md rounded-md font-mono">
           <header class="bg-gray-800 text-white px-4 py-2 -mx-4 -mt-4 rounded-t-md mb-2 flex items-center justify-between">
             <span>subject: team training</span>
             <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
@@ -38,9 +38,9 @@
       </div>
     </section>
 
-    <section class="">
-      <div class="content flex gap-8 items-center">
-        <div>
+    <section class="bg-brand-cyan">
+      <div class="content flex gap-8 items-center flex-col lg:flex-row">
+        <div class="max-w-prose">
           <h2 class="text-2xl">Scope of Work</h2>
           <p>
             Based on our initial conversations we deliver and discuss a first draft of a Scope of Work.
@@ -62,7 +62,7 @@
     </section>
 
     <section class="">
-      <div class="flex gap-8 p-8 items-stretch bg-black shadow-md relative rounded-b-md max-w-screen-lg mx-auto">
+      <div class="flex flex-col md:flex-row gap-8 p-8 items-stretch bg-black shadow-md relative rounded-b-md max-w-screen-lg mx-auto">
         <div class="bar absolute px-4 -top-8 left-0 w-full h-8 bg-gray-800 rounded-t-md flex items-center justify-between">
           <div class="flex gap-2">
             <div class="bg-red-600 w-3 h-3 rounded-full"></div>
@@ -83,7 +83,7 @@
             </p>
           </div>
         </div>
-        <div class="chat max-w-sm">
+        <div class="chat md:max-w-sm">
           <header>
             From session chat
           </header>
@@ -120,16 +120,16 @@
 
     </section>
 
-    <section class="">
-      <div class="content flex gap-8 items-center">
+    <section class="bg-brand-green-400 overflow-hidden">
+      <div class="content flex gap-8 items-center flex-col md:flex-row">
         <div>
           <nuxt-link to="/resources/6-tools-for-group-communication">
-            <figure class="paper-stack w-80">
+            <figure class="paper-stack">
               <img src="https://drive.google.com/thumbnail?authuser=0&sz=w320&id=120NxBW0KQYpazmeryz0jocQQsPKKHw6eLTjw-szx42g" alt="6 Skills For Group Communication">
             </figure>
           </nuxt-link>
         </div>
-        <div>
+        <div class="max-w-prose w-2/3">
           <h2 class="text-2xl">Session 1: Making Feedback Regenerative</h2>
           <p>
             In this session we move through the 6 Living System Norms for Group Communication.
@@ -140,11 +140,21 @@
           </p>
         </div>
       </div>
+      <div class="content mt-8">
+        <p class="font-bold">We covered the following skills</p>
+          <content-grid :relations="[
+          'i-statements',
+          'active-listening',
+          'owning-your-interpretations',
+          'sharing-impact-skillfully',
+          'validating-before-criticizing',
+          'helping-others-be-seen',]" subtitle=false>Painpoint</content-grid>
+      </div>
     </section>
 
-    <section class="">
-      <div class="content flex gap-8 items-center">
-        <div>
+    <section class="bg-brand-blue-500 overflow-hidden">
+      <div class="content flex gap-8 items-center flex-col-reverse md:flex-row">
+        <div class="max-w-prose w-2/3">
           <h2 class="text-2xl">Session 2: The 3 Levels of Coordination</h2>
           <p>
             On the second day we adjusted our plans based on the feedback we received from
@@ -159,7 +169,7 @@
         </div>
         <div>
           <nuxt-link to="/resources/3-levels-of-coordination">
-            <figure class="paper-stack w-80">
+            <figure class="paper-stack">
               <img src="https://drive.google.com/thumbnail?authuser=0&sz=w320&id=1iJaa2S-YtuWcUodz-OGM1L4R-jplKPVo4MuL4-4GHIg" alt="The 3 Levels Of Coordination">
             </figure>
           </nuxt-link>
@@ -168,17 +178,18 @@
     </section>
 
     <section>
-      <div class="container max-w-prose mx-auto">
-        <h2 class="text-2xl">Thoughts and Reflections</h2>
-        <p>This was our first in-person facilitation job as People Medicine in almost 2 years. It was the first in-person gathering many of these GitCoin members had ever had. The energy was quite powerful in the room. Furthermore, this group of people seemed to be very present and accepting of our facilitation, games, and exercises. They came with a “yes and” attitude. They were critical and helpful, curious and wise. A thrill to work with. Only time will tell what kind of impact our sessions will have had. Though in the brief afterglow of the space we hosted here is an sampling of the feedback we received:</p>
-
-        <div class="p-8 mt-8 bg-dark text-brand-pink rounded-md relative">
-          <div class="text-lg text-brand-pink absolute top-2 right-2">
-            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"/></svg>
+      <div class="content">
+        <div class="max-w-prose mx-auto">
+          <h2 class="text-2xl">Thoughts and Reflections</h2>
+          <p>This was our first in-person facilitation job as People Medicine in almost 2 years. It was the first in-person gathering many of these GitCoin members had ever had. The energy was quite powerful in the room. Furthermore, this group of people seemed to be very present and accepting of our facilitation, games, and exercises. They came with a “yes and” attitude. They were critical and helpful, curious and wise. A thrill to work with. Only time will tell what kind of impact our sessions will have had. Though in the brief afterglow of the space we hosted here is an sampling of the feedback we received:</p>
+          <div class="p-8 mt-8 bg-dark text-brand-pink rounded-md relative">
+            <div class="text-lg text-brand-pink absolute top-2 right-2">
+              <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"/></svg>
+            </div>
+            <blockquote class="text-lg font-serif italic border-l-2 border-brand-pink pl-4">
+             It was great! I don't usually speak up because I prefer to listen but I managed to find the courage to talk because of the space and environment you've created that made me comfortable.
+            </blockquote>
           </div>
-          <blockquote class="text-lg font-serif italic border-l-2 border-brand-pink pl-4">
-           It was great! I don't usually speak up because I prefer to listen but I managed to find the courage to talk because of the space and environment you've created that made me comfortable.
-          </blockquote>
         </div>
       </div>
     </section>
@@ -188,11 +199,15 @@
 </template>
 
 <style lang="scss" scoped>
+  section {
+    @apply py-28 px-4;
+    h2 { @apply font-bold; }
+    h2,p {
+      @apply mb-4;
+    }
+  }
   .content {
     @apply max-w-screen-lg mx-auto;
-  }
-  section {
-    @apply my-20 p-8
   }
   .zoom {
     background: 
@@ -203,7 +218,7 @@
     #000 url('~assets/img/zoom-gallery-view.png') no-repeat center/cover;
   }
   .chat {
-    @apply p-4 -my-8 -mr-8 bg-white border-l border-gray-400;
+    @apply p-4 -mb-8 -mx-8 md:-my-8 md:-mr-8 md:ml-0 bg-white border-l border-gray-400 ;
     header {
       @apply -mx-4 -mt-2 mb-2 pb-2 border-b border-gray-400 text-center text-lg font-bold text-gray-600;
     }

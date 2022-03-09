@@ -20,9 +20,9 @@
       </div>
     </aside>
 
-    <template v-if="display">
+    <template>
       
-      <div v-for="page in content" :key="page.slug" :ref="page.slug" 
+      <div v-for="page in content" :key="page.slug" :ref="page.slug" v-show="display" 
         class="my-10"
       >
           <nuxt-link :to="href(page.slug)">
