@@ -12,6 +12,26 @@ body {
 
 .nuxt-content {
 
+
+  a:not(.no-underline) {
+    &:link {
+      @apply text-brand-red underline decoration-wavy;
+    }
+
+    &:hover {
+      @apply text-brand-purple underline decoration-solid underline-offset-2;
+    }
+
+    &:visited {
+      @apply text-brand-purple;
+    }
+  }
+
+  h1 { @apply text-3xl font-bold; }
+  h2 { @apply text-2xl font-bold; }
+  h3 { @apply text-xl font-bold; }
+  h4,h5,h6 { @apply text-lg font-bold; }
+
   p:not(:last-child):not([class*="mb-"]),
   ul:not(:last-child):not([class*="mb-"]) {
     @apply mb-4;
@@ -34,14 +54,14 @@ body {
   @apply border border-brand-blue-400 text-brand-blue-400 rounded-md px-3 py-1;
 
   &:hover {
-    @apply bg-brand-blue-400;
+    @apply bg-brand-blue-400 text-white;
   }
 
   &.is-primary {
     @apply border-brand-pink bg-brand-pink text-dark;
 
     &:hover {
-      @apply bg-white;
+      @apply bg-transparent;
     }
   }
 }
@@ -49,9 +69,7 @@ body {
 // GLOBAL
 
 .paper-stack {
-  @apply relative
-  before:absolute before:inset-0 before:bg-white before:shadow-md before:rotate-6 
-  after:absolute after:inset-0 after:bg-white after:shadow-md after:rotate-3;
+  @apply relative before:absolute before:inset-0 before:bg-white before:shadow-md before:rotate-6 after:absolute after:inset-0 after:bg-white after:shadow-md after:rotate-3;
   img {
     @apply shadow-md -rotate-2 z-10 relative;
   }

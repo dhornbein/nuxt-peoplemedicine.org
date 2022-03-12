@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col justify-center px-2 pb-10 ">
+  <div class="flex flex-wrap gap-4 justify-center px-2 pb-10">
     <article 
-      class="p-5 mt-12 bg-white rounded-lg shadow-lg h-full flex flex-col justify-between border-l-4"
+      class="p-5 mt-12 bg-gray-50 rounded-lg shadow-lg max-w-md h-full flex flex-col justify-between border"
       :class="colors(article)['border']"
       v-for="article in articles" ref="articles" :key="article.slug">
       <div class="thumbnail h-32 -mt-14 overflow-hidden px-2 pb-2 mb-4 border-b border-gray-200">

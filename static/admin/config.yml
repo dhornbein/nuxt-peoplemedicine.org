@@ -30,7 +30,7 @@ collections:
         name: color
         widget: select
         required: false
-        options: ['pink','orange','yellow','cyan','blue','purple','red','green']
+        options: ['pink','orange','yellow','cyan','blue-400','purple','red','green-400']
       - {label: "Body", name: "body", widget: "markdown", required: false}
       - label: "Authors"
         name: "authors"
@@ -291,7 +291,7 @@ collections:
       - label: "Color"
         name: color
         widget: select
-        options: ['pink','orange','yellow','cyan','blue','purple','red','green']
+        options: ['pink','orange','yellow','cyan','blue-400','purple','red','green-400']
       - {label: "Order", name: "order", widget: "number", value_type: int, required: false}
   - name: "philosophies" 
     label: "Philosophies"

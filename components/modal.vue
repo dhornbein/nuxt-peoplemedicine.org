@@ -24,6 +24,9 @@ export default {
   methods: {
     closeModal(e) {
       this.$store.dispatch('modal/closeModal')
+    },
+    getScrollbarWidth() {
+      return window.innerWidth - document.documentElement.clientWidth;
     }
   },
   data() {
@@ -36,7 +39,8 @@ export default {
   head() {
     return {
       bodyAttrs: {
-          class: this.$store.state.modal.open ? 'modal-open' : 'modal-closed'
+          class: this.$store.state.modal.open ? 'modal-open' : 'modal-closed',
+          style: this.$store.state.modal.open ? `padding-right: ${this.getScrollbarWidth()}px` : ''
       },
       htmlAttrs: {
           class: this.$store.state.modal.open ? 'modal-open' : 'modal-closed'

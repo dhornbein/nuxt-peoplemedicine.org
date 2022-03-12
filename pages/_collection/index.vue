@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center items-center px-2 pb-10 ">
+  <div class="flex flex-wrap justify-center items-center px-2 pb-10 ">
     <article class="w-full md:w-1/2 lg:w-1/3 p-3"
       v-for="article in articles" :key="article.slug">
       <nuxt-link :to="link(article.slug)" class="p-5 mb-5 bg-white rounded-lg shadow-lg h-full flex flex-col justify-between border-l-4" :class="colors(article)['border']">

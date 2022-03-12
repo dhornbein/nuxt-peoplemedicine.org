@@ -3,7 +3,7 @@ title: Relational soil and movement building
 date: 2020-11-11T21:48:42.555Z
 category: relation
 featuredImg: /img/uploads/1280px-rakan_statues_covered_in_moss_at_otagi_nenbutsu_temple.png
-color: blue
+color: blue-400
 authors:
   - name: Maria Talero
     email: maria@peoplemedicine.org

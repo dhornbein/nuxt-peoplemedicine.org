@@ -5,7 +5,7 @@
       <div class="w-full sm:w-1/2 md:w-1/3 flex p-4" v-for="page in content" :key="page.slug">
 
         <a :href="href(page.slug, true)" :data-target="page.slug" @click.prevent="openModal($event, page)"
-          class="related__item group block w-full p-4 bg-white border border-gray-400 hover:border-brand-red rounded-lg shadow-md text-brand-red"
+          class="related__item group no-underline block w-full p-4 bg-white border border-gray-400 hover:border-brand-red rounded-lg shadow-md text-brand-red"
         >
           <p class="mb-2 text-lg font-bold text-dark group-hover:text-brand-red">{{ page.title }}</p>
         

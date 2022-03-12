@@ -37,6 +37,17 @@ export default {
     headerClass() {
       let bgColor = this.article.color ? 'bg-brand-' + this.article.color : false
       let textColor = this.article.color ? 'text-brand-' + this.article.color : false
+      // bg-brand-cream, text-brand-cream
+      // bg-brand-pink, text-brand-pink
+      // bg-brand-orange, text-brand-orange
+      // bg-brand-yellow, text-brand-yellow
+      // bg-brand-green-400, text-brand-green-400
+      // bg-brand-green-500, text-brand-green-500
+      // bg-brand-cyan, text-brand-cyan
+      // bg-brand-blue-400, text-brand-blue-400
+      // bg-brand-blue-500, text-brand-blue-500
+      // bg-brand-purple, text-brand-purple
+      // bg-brand-red, text-brand-red
       return {
         [bgColor]: bgColor,
         [textColor]: textColor,
