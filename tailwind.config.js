@@ -1,5 +1,4 @@
 module.exports = {
-  mode: 'jit',
   theme: {
     fontFamily: {
       sans: ['Nunito', 'sans-serif'],
@@ -31,7 +30,6 @@ module.exports = {
       },
     },
   },
-  variants: {},
   plugins: [],
-  purge: []
+  content: []
 }
