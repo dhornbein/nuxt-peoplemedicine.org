@@ -6,7 +6,7 @@
       <address class="inline not-italic" property="cc:attributionName">
         By 
         <a class="font-bold" :href="'mailto:' + maria.email" rel="author">{{ maria.name }}</a> 
-        <a class="" :href="'mailto:' + maria.email" title="Send Maria an email">💌 </a>
+        <a class="" :href="'mailto:' + maria.email" title="Send Maria an email">✉ </a>
       </address>
       <br>
       <em>(unless otherwise stated)</em>

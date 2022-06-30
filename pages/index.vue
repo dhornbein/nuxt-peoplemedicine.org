@@ -30,6 +30,7 @@
     <section class="bg-dark min-h-[80vh] py-[230px] flex flex-col md:flex-row justify-center items-center overflow-hidden">
       <div class="text-brand-cyan min-h-[360px] max-w-[360px] p-5 relative flex flex-col justify-center mb-[180px] md:mb-0">
         <div class="absolute w-full h-0 bg-no-repeat top-0 left-0 pt-[100%] scale-[2.3] origin-center bg-center" style="background-image:url('/img/web-bio-circle-teal.svg'); background-size: auto 80%;"></div>
+        <div class="absolute h-[300px] w-full bg-no-repeat md:-top-36 md:left-64 left-0 -bottom-72 origin-center bg-center bg-contain" style="background-image:url('/img/pm-portrait-maria.png');"></div>
         <h2 class="text-3xl font-bold relative">Maria Talero, Ph.D.</h2>
 
         <nuxt-content :document="content.maria" class="" />
@@ -37,12 +38,17 @@
       </div>
     </section>
 
-    <section id="contact" class="bg-dark p-10 flex justify-center items-center">
+    <section id="who-we-are" class="bg-brand-purple py-10">
+      <div class="container mx-auto flex items-center justify-around lg:flex-row flex-col-reverse px-5">
+        <div class="p-5">
+          <img src="../static/img/web-2-souls.svg" alt="two souls intertwined, taming each other's shadows">
+        </div>
+        <div class="text-lg leading-relaxed md:w-2/3 sm:w-full bg-brand-cream p-4 rounded-lg">
+          <h2 class="text-sm font-mono uppercase mb-6 pb-2 border-b border-dotted border-dark">Let's Connect</h2>
 
-      <div>
-        <h1 class="text-4xl text-white text-center my-4">Let's Connect</h1>
-        
-        <ContactForm class="text-white" />
+          <ContactForm class="mx-0" />
+
+        </div>
       </div>
     </section>
     

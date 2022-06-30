@@ -91,10 +91,10 @@
 
 <style lang="scss" scoped>
 .input {
-  @apply p-2 text-lg rounded-md border border-gray-400 shadow-inner flex-grow text-dark mb-2;
+  @apply p-2 text-lg rounded-md border border-gray-400 shadow-inner flex-grow text-dark mb-2 w-full;
 }
 
 .row {
-  @apply flex flex-col grow;
+  @apply flex flex-col grow shrink;
 }
 </style>
