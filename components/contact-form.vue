@@ -6,6 +6,8 @@
     action="https://formkeep.com/f/a3f97e28525e"
     accept-charset="UTF-8"
     method="post"
+    ref="contactForm"
+    @submit="submitForm"
   >
     <input name="utf8" type="hidden" value="&#x2713;" />
     <div class="flex gap-2">
@@ -88,6 +90,16 @@
     />
   </form>
 </template>
+
+<script>
+export default {
+  methods: {
+    submitForm(){
+        this.$refs.contactForm.reset(); // This will clear that form
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .input {
