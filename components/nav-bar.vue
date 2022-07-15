@@ -67,7 +67,7 @@ export default {
             },
             {
               name: 'Connect',
-              url: '/connect',
+              url: '/#contact',
               class: ''
             },
           ],
@@ -76,11 +76,6 @@ export default {
           class: 'md:order-3',
           showMobile: false,
           links: [
-            {
-              name: 'Offerings',
-              url: '/offerings',
-              class: ''
-            },
             {
               name: 'Philosophy',
               url: '/philosophies',

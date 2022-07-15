@@ -1,20 +1,12 @@
 <template>
   <footer>
-    <div class="container mx-auto my-10 px-2">
-
-      <newsletter class="p-5 bg-white rounded-md shadow-lg max-w-screen-sm mx-auto" label="Join our Newsletter" :tags="['footer']" childClass="" />
-
-    </div>
     <div class="text-center" xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
       <p class="text-3xl font-bold" property="dct:title">People Medicine</p> 
       © 
       <address class="inline not-italic" property="cc:attributionName">
         By 
         <a class="font-bold" :href="'mailto:' + maria.email" rel="author">{{ maria.name }}</a> 
-        <a class="" :href="'mailto:' + maria.email" title="Send Maria an email">💌 </a>
-        and 
-        <a class="font-bold" :href="'mailto:' + drew.email" rel="author">{{ drew.name }}</a> 
-        <a class="" :href="'mailto:' + drew.email" title="Send Drew an email">💌 </a>
+        <a class="" :href="'mailto:' + maria.email" title="Send Maria an email">✉ </a>
       </address>
       <br>
       <em>(unless otherwise stated)</em>
